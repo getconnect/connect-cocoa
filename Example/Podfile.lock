@@ -1,0 +1,41 @@
+PODS:
+  - CocoaLumberjack (1.9.2):
+    - CocoaLumberjack/Extensions (= 1.9.2)
+  - CocoaLumberjack/Core (1.9.2)
+  - CocoaLumberjack/Extensions (1.9.2):
+    - CocoaLumberjack/Core
+  - ConnectClient (0.1.0):
+    - YapDatabase (~> 2.6)
+  - SOCKit (1.1)
+  - URLMock (1.2.3):
+    - URLMock/Core (= 1.2.3)
+    - URLMock/SubclassResponsibility (= 1.2.3)
+    - URLMock/TestHelpers (= 1.2.3)
+  - URLMock/Core (1.2.3):
+    - SOCKit (~> 1.1)
+  - URLMock/SubclassResponsibility (1.2.3):
+    - URLMock/TestHelpers
+  - URLMock/TestHelpers (1.2.3)
+  - YapDatabase (2.6.1):
+    - YapDatabase/standard (= 2.6.1)
+  - YapDatabase/common (2.6.1):
+    - CocoaLumberjack (~> 1)
+  - YapDatabase/standard (2.6.1):
+    - YapDatabase/common
+
+DEPENDENCIES:
+  - ConnectClient (from `../ConnectClient.podspec`)
+  - URLMock (~> 1.2.3)
+
+EXTERNAL SOURCES:
+  ConnectClient:
+    :path: ../ConnectClient.podspec
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
+  ConnectClient: e75006356f43b0f5065f9183b4799742a0d77551
+  SOCKit: c7376ac262bea9115b8f749358f762522a47d392
+  URLMock: 5d14a89942559f7948793d2f9aaffc25a6af2166
+  YapDatabase: 13566c87dc9226a0f15d755edba08e8ad94cac9f
+
+COCOAPODS: 0.36.0.beta.1

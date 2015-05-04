@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'ConnectClient', :exclusive => true do
+  pod "ConnectClient", :path => "../ConnectClient.podspec"
+  
+end
+
+target 'Tests', :exclusive => true do
+  pod "ConnectClient", :path => "../ConnectClient.podspec"
+
+  pod 'URLMock', '~> 1.2.3'
+end

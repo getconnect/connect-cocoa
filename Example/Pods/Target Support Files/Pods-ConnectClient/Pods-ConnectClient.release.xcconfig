@@ -1,0 +1,6 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CocoaLumberjack" "${PODS_ROOT}/Headers/Public/ConnectClient" "${PODS_ROOT}/Headers/Public/SOCKit" "${PODS_ROOT}/Headers/Public/URLMock" "${PODS_ROOT}/Headers/Public/YapDatabase"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/CocoaLumberjack" -isystem "${PODS_ROOT}/Headers/Public/ConnectClient" -isystem "${PODS_ROOT}/Headers/Public/SOCKit" -isystem "${PODS_ROOT}/Headers/Public/URLMock" -isystem "${PODS_ROOT}/Headers/Public/YapDatabase"
+OTHER_LDFLAGS = -ObjC -weak_library /usr/lib/libc++.dylib -l"Pods-ConnectClient-CocoaLumberjack" -l"Pods-ConnectClient-ConnectClient" -l"Pods-ConnectClient-YapDatabase" -l"sqlite3"
+OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
+PODS_ROOT = ${SRCROOT}/Pods
