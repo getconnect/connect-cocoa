@@ -40,12 +40,12 @@
                                        forEvent:(TPEvent*)event {
     
     NSString *message = json[@"message"];
-    BOOL success = json[@"success"];
-    BOOL duplicate = json[@"duplicate"];
+    NSNumber *success = json[@"success"];
+    NSNumber *duplicate = json[@"duplicate"];
     
     return [[TPEventAPIResponse alloc] initWithEvent:event
-                                             success:success
-                                           duplicate:duplicate
+                                             success:success.boolValue
+                                           duplicate:duplicate.boolValue
                                              message:message];
 }
 
