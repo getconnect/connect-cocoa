@@ -1,9 +1,5 @@
 # ConnectClient
-
-[![CI Status](http://img.shields.io/travis/ChadEdrupt/ConnectClient.svg?style=flat)](https://travis-ci.org/ChadEdrupt/ConnectClient)
-[![Version](https://img.shields.io/cocoapods/v/ConnectClient.svg?style=flat)](http://cocoapods.org/pods/ConnectClient)
-[![License](https://img.shields.io/cocoapods/l/ConnectClient.svg?style=flat)](http://cocoapods.org/pods/ConnectClient)
-[![Platform](https://img.shields.io/cocoapods/p/ConnectClient.svg?style=flat)](http://cocoapods.org/pods/ConnectClient)
+[![Build Status](https://travis-ci.org/chadedrupt/connect-cocoa.svg)](https://travis-ci.org/chadedrupt/connect-cocoa)
 
 ## Usage
 
