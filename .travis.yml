@@ -1,5 +1,5 @@
 language: objective-c
 podfile: Example/Podfile
-xcode_project: Example/ConnectClient.xcodeproj
+xcode_workspace: Example/ConnectClient.xcworkspace
 xcode_scheme: ConnectClient-Example
 xcode_sdk: iphonesimulator8.1
