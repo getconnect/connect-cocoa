@@ -2,4 +2,4 @@ language: objective-c
 podfile: Example/Podfile
 xcode_project: Example/ConnectClient.xcodeproj
 xcode_scheme: ConnectClient-Example
-xcode_sdk: iphonesimulator7.1
+xcode_sdk: iphonesimulator8.1
