@@ -90,7 +90,9 @@ typedef NS_ENUM(NSInteger, TPHTTPStatusCode) {
                                                           options:0
                                                             error:&jsonError];
     if (jsonError) {
-        completionHandler(NO, jsonError);
+        if (completionHandler) {
+            completionHandler(NO, jsonError);
+        }
         return;
     }
     
@@ -103,7 +105,9 @@ typedef NS_ENUM(NSInteger, TPHTTPStatusCode) {
     
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
-            completionHandler(NO, error);
+            if (completionHandler) {
+                completionHandler(NO, error);
+            }
             return;
         }
         
@@ -111,14 +115,18 @@ typedef NS_ENUM(NSInteger, TPHTTPStatusCode) {
         TPHTTPStatusCode status = (TPHTTPStatusCode)httpResponse.statusCode;
         
         if (status == TPHTTPStatusOK) {
-            completionHandler(YES, nil);
+            if (completionHandler) {
+                completionHandler(YES, nil);
+            }
             return;
         }
         
         if (status == TPHTTPStatusUnauthorised) {
             NSError *unauthorisedError = [NSError tp_errorWithDescription:@"Invalid API key"
                                                             andSuggestion:@"Check the Connect portal and get a valid WRITE key"];
-            completionHandler(NO, unauthorisedError);
+            if (completionHandler) {
+                completionHandler(NO, unauthorisedError);
+            }
             return;
         }
         
@@ -127,18 +135,24 @@ typedef NS_ENUM(NSInteger, TPHTTPStatusCode) {
                                                                      options:NSJSONReadingAllowFragments
                                                                        error:&jsonError];
         if (jsonError) {
-            completionHandler(NO, jsonError);
+            if (completionHandler) {
+                completionHandler(NO, jsonError);
+            }
             return;
         }
         
         NSError *httpError = [self errorForHTTPStatusCode:status
                                                   details:errorDetails];
         if (httpError) {
-            completionHandler(NO, error);
+            if (completionHandler) {
+                completionHandler(NO, error);
+            }
             return;
         }
         
-        completionHandler(NO, error);
+        if (completionHandler) {
+            completionHandler(NO, error);
+        }
     }];
     
     [task resume];
@@ -150,7 +164,9 @@ typedef NS_ENUM(NSInteger, TPHTTPStatusCode) {
     NSError *processingError;
     NSData *requestBody = [self processBatch:eventBatch error:&processingError];
     if (processingError) {
-        completionHandler(nil, processingError);
+        if (completionHandler) {
+            completionHandler(nil, processingError);
+        }
         return;
     }
     
@@ -160,7 +176,9 @@ typedef NS_ENUM(NSInteger, TPHTTPStatusCode) {
     
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
-            completionHandler(nil, error);
+            if (completionHandler) {
+                completionHandler(nil, error);
+            }
             return;
         }
         
@@ -173,26 +191,34 @@ typedef NS_ENUM(NSInteger, TPHTTPStatusCode) {
                                                                             options:NSJSONReadingAllowFragments
                                                                               error:&jsonError];
             if (jsonError) {
-                completionHandler(nil, jsonError);
+                if (completionHandler) {
+                    completionHandler(nil, jsonError);
+                }
                 return;
             }
             
             NSDictionary *processedResponseDetails = [self processBatchResponse:responseDetails
                                                                       forEvents:eventBatch];
-            completionHandler(processedResponseDetails, nil);
+            if (completionHandler) {
+                completionHandler(processedResponseDetails, nil);
+            }
             return;
         }
         
         if (status == TPHTTPStatusUnauthorised) {
             NSError *unauthorisedError = [NSError tp_errorWithDescription:@"Invalid API key"
                                                             andSuggestion:@"Check the Connect portal and get a valid WRITE key"];
-            completionHandler(nil, unauthorisedError);
+            if (completionHandler) {
+                completionHandler(nil, unauthorisedError);
+            }
             return;
         }
         
         NSError *unknownError = [NSError tp_errorWithDescription:@"An unkown errror occured"
                                                         andSuggestion:@"Check the Connect documentation"];
-        completionHandler(nil, unknownError);
+        if (completionHandler) {
+            completionHandler(nil, unknownError);
+        }
     }];
     
     [task resume];
@@ -234,8 +260,6 @@ typedef NS_ENUM(NSInteger, TPHTTPStatusCode) {
         
         [groupedCollectionEvents setValue:collectionEvents forKey:collectionName];
     }
-    
-    NSLog(@"%@", groupedCollectionEvents);
     
     NSError *jsonError;
     NSData *data = [NSJSONSerialization dataWithJSONObject:groupedCollectionEvents

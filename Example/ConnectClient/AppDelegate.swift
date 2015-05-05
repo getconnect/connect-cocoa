@@ -23,7 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(application: UIApplication) {
         
-        TPConnectClient.sharedClient()?.pushAllPendingEvents()
+        if let connectClient = TPConnectClient.sharedClient() {
+            connectClient.pushAllPendingEvents()
+        }
         
     }
 }

@@ -1,5 +1,5 @@
 language: objective-c
 podfile: Example/Podfile
-xcode_project: Example/ConnectClient.xcodeproj # path to your xcodeproj folder
+xcode_project: Example/ConnectClient.xcodeproj
 xcode_scheme: ConnectClient-Example
-xcode_sdk: iphonesimulator8.0
+xcode_sdk: iphonesimulator7.1

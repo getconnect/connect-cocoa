@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TPEvent.h"
 
 @interface TPConnectClient : NSObject
 
@@ -68,7 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param collectionName The name of the collection to add the event too.
  @param completionHandler A block object to be executed when the task finishes. This block has no return value and takes two arguments: a BOOL informing if the push was successful and otherwise an error informing why not.
  */
-- (void)pushEvent:(NSDictionary *)event toCollection:(NSString *)collectionName completionHandler:(void (^)(BOOL success, NSError *__nullable error))completionHandler;
+- (void)pushEvent:(NSDictionary *)event toCollection:(NSString *)collectionName completionHandler:(void (^__nullable)(BOOL success, NSError *__nullable error))completionHandler;
 
 /**
  
@@ -80,7 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param event An NSDictionary where the keys are the name of the collection and values are NSArrays of NSDictionarys that contain the events properties.
  @param completionHandler A block object to be executed when the task finishes. This block has no return value and takes two arguments: an NSDictionary informing of the success of each event in the batch grouped by collection. And an error if the requst itself failed.
  */
-- (void)pushEventBatch:(NSDictionary *)eventBatch completionHandler:(void (^)(NSDictionary *__nullable results, NSError *__nullable error))completionHandler;
+- (void)pushEventBatch:(NSDictionary *)eventBatch completionHandler:(void (^__nullable)(NSDictionary *__nullable results, NSError *__nullable error))completionHandler;
 
 /**
  
@@ -107,7 +108,30 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param completionHandler A block object to be executed when the task finishes. This block has no return value and takes two arguments: an NSDictionary informing of the success of each event in the batch grouped by collection. And an error if the requst itself failed.
  */
-- (void)pushAllPendingEventsWithCompletionHandler:(void (^)(NSDictionary *__nullable results, NSError *__nullableerror))completionHandler;
+- (void)pushAllPendingEventsWithCompletionHandler:(void (^__nullable)(NSDictionary *__nullable results, NSError *__nullable error))completionHandler;
+
+
+/**
+ 
+ Removes the matching event from the pending queue
+ 
+ Note. This does not remove the event from Connect if it has been succesfully added.
+ 
+ @param eventId The Id of the event to be removed.
+ 
+ @param collectionName The Id of the event to be removed.
+ 
+ */
+- (void)removePendingEventWithId:(NSString*)eventId fromCollection:(NSString*)collectionName;
+
+/**
+ 
+ Removes all pending events from the queue
+ 
+ Note. This does not remove any event from Connect if it has already been succesfully pushed.
+ 
+ */
+- (void)removeAllPendingEvents;
 
 NS_ASSUME_NONNULL_END
 

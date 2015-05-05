@@ -86,7 +86,9 @@ completionHandler:(void (^)(BOOL success, NSError *error))completionHandler {
     NSError *processingError;
     [newEvent process:&processingError];
     if (processingError) {
-        completionHandler(NO, processingError);
+        if (completionHandler) {
+            completionHandler(NO, processingError);
+        }
     }
     
     [self.apiClient pushEvent:newEvent
@@ -100,7 +102,9 @@ completionHandler:(void (^)(BOOL success, NSError *error))completionHandler {
     NSDictionary *processedEvents = [TPEvent processBatch:eventBatch
                                                     error:&processingError];
     if (processingError) {
-        completionHandler(nil, processingError);
+        if (completionHandler) {
+            completionHandler(nil, processingError);
+        }
         return;
     }
     
@@ -110,14 +114,16 @@ completionHandler:(void (^)(BOOL success, NSError *error))completionHandler {
 
 
 - (void)pushAllPendingEvents {
-    [self pushAllPendingEventsWithCompletionHandler:^(NSDictionary * results, NSError * __nonnull error) {}];
+    [self pushAllPendingEventsWithCompletionHandler:^(NSDictionary *results, NSError *error) {}];
 }
-- (void)pushAllPendingEventsWithCompletionHandler:(void (^)(NSDictionary * results, NSError *error))completionHandler {
+- (void)pushAllPendingEventsWithCompletionHandler:(void (^)(NSDictionary *results, NSError *error))completionHandler {
     
     [self.eventStore fetchPendingEventsWithCompletionHandler:^(NSMutableDictionary *pendingEvents) {
         [self.apiClient pushEventBatch:pendingEvents completionHandler:^(NSDictionary * results, NSError *error) {
             if (error) {
-                completionHandler(nil, error);
+                if (completionHandler) {
+                    completionHandler(nil, error);
+                }
                 return;
             }
             
@@ -130,10 +136,22 @@ completionHandler:(void (^)(BOOL success, NSError *error))completionHandler {
                 }
             }
             
-            completionHandler(results, nil);
+            if (completionHandler) {
+                completionHandler(results, nil);
+            }
         }];
     }];
 }
 
+#pragma mark - Event Removing
+
+- (void)removePendingEventWithId:(NSString*)eventId fromCollection:(NSString*)collectionName {
+    [self.eventStore removeEventWithId:eventId
+                        fromCollection:collectionName];
+}
+
+- (void)removeAllPendingEvents {
+    [self.eventStore deleteAllPendingEvents:nil];
+}
 
 @end

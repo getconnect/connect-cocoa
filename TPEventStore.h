@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)fetchPendingEventsWithCompletionHandler:(void (^)(NSMutableDictionary *pendingEvents))completionHandler;
 
-- (void)deleteAllPendingEvents:(void (^)(void))completionHandler;
+- (void)deleteAllPendingEvents:(void (^__nullable)(void))completionHandler;
 
 @property (nonatomic, strong) NSString *databasePath;
 

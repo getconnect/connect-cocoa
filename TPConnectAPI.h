@@ -17,9 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)apiClientWithKey:(NSString*)apiKey;
 
-- (void)pushEvent:(TPEvent*)event completionHandler:(void (^)(BOOL success, NSError*__nullable))completionHandler;
+- (void)pushEvent:(TPEvent*)event completionHandler:(void (^__nullable)(BOOL success, NSError*__nullable))completionHandler;
 
-- (void)pushEventBatch:(NSDictionary*)eventBatch completionHandler:(void (^)(NSDictionary*__nullable individualResults, NSError*__nullable error))completionHandler;
+- (void)pushEventBatch:(NSDictionary*)eventBatch completionHandler:(void (^__nullable)(NSDictionary*__nullable individualResults, NSError*__nullable error))completionHandler;
 
 NS_ASSUME_NONNULL_END
 @end

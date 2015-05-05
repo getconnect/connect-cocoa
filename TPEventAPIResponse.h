@@ -19,9 +19,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (TPEventAPIResponse*)eventAPIResponseFromJSON:(NSDictionary*)json forEvent:(TPEvent*)event;
 
+/**
+ The event that this response belongs to
+ */
 @property (nullable, nonatomic, strong) TPEvent *event;
+
+/**
+ A BOOL indicating if this particular request was persisted in Connect
+ */
 @property (nonatomic) BOOL success;
+
+/**
+ A BOOL indicating if this particular event has already been added to Connect
+ */
 @property (nonatomic) BOOL duplicate;
+
+/**
+ A message outlining why a request was unnsuccessfull. Will be nil if the event was succesfully added.
+ */
 @property (nullable, nonatomic, strong) NSString *message;
 
 NS_ASSUME_NONNULL_END
