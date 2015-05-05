@@ -3,7 +3,6 @@
 //  Connect
 //
 //  Created by Chad Edrupt on 28/04/2015.
-//  Copyright (c) 2015 Tipi HQ. All rights reserved.
 //
 
 #import "TPEvent.h"

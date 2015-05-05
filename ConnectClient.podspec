@@ -1,19 +1,10 @@
-#
-# Be sure to run `pod lib lint ConnectClient.podspec' to ensure this is a
-# valid spec and remove all comments before submitting the spec.
-#
-# Any lines starting with a # are optional, but encouraged
-#
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = "ConnectClient"
   s.version          = "0.1.0"
   s.summary          = "The Connect iOS and OSX SDK"
   s.description      = <<-DESC
                        Use Connect to build beautiful visualizations for your users.
-                       The Connect SDK makes it easy to push events to Connect ready for aggreagtions.
+                       The Connect SDK makes it easy to push events to Connect ready for querying and visualizing.
                        DESC
   s.homepage         = "https://github.com/chadedrupt/connect-cocoa"
   s.license          = "MIT"

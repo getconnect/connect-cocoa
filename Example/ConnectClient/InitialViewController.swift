@@ -3,16 +3,13 @@
 //  ConnectClient
 //
 //  Created by Chad Edrupt on 4/05/2015.
-//  Copyright (c) 2015 Chad Edrupt. All rights reserved.
 //
 
 import UIKit
 
 class InitialViewController: UIViewController {
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    
+    @IBAction func pushEventTapped(sender: UIButton) {
         pushSampleEvent()
     }
     
