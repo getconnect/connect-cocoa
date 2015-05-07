@@ -1,5 +1,4 @@
 # Connect iOS/OSX SDK
-[![Build Status](https://travis-ci.org/chadedrupt/connect-cocoa.svg)](https://travis-ci.org/chadedrupt/connect-cocoa)
 
 ## Getting Access
 
