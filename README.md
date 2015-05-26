@@ -1,5 +1,7 @@
 # Connect iOS/OSX SDK
 
+[![Join the chat at https://gitter.im/getconnect/connect-cocoa](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/getconnect/connect-cocoa?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Getting Access
 
 [Get Connect](https://getconnect.io) to sign up and gain access to API keys to start using the SDK.
