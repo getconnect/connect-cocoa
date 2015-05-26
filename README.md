@@ -1,7 +1,7 @@
 # Connect iOS/OSX SDK
 
 [![Join the chat at https://gitter.im/getconnect/connect-cocoa](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/getconnect/connect-cocoa?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Version](http://img.shields.io/cocoapods/v/ConnectClient.svg)](http://cocoapods.org/?q=IGInterfaceDataTable)
+[![Version](http://img.shields.io/cocoapods/v/ConnectClient.svg)](http://cocoapods.org/?q=ConnectClient)
 
 ## Getting Access
 
