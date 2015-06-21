@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         
-        TPConnectClient.sharedClientWithAPIKey("2263ffe20c676cb90b1d9e2b2473fae9ae4b26a98542724677b23eb0a00e69e6")
+        TPConnectClient.sharedClientWithProjectId("", apiKey: "2263ffe20c676cb90b1d9e2b2473fae9ae4b26a98542724677b23eb0a00e69e6")
         
         return true
     }

@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, TPHTTPStatusCode) {
 
 @property (nonnull, nonatomic, readonly) NSURL *baseUrl;
 @property (nonnull, nonatomic, readonly) NSURL *pushBaseUrl;
+@property (nullable, nonatomic, strong) NSString *projectId;
 @property (nullable, nonatomic, strong) NSString *apiKey;
 @property (nonnull, nonatomic, strong) NSURLSession *session;
 
@@ -47,27 +48,32 @@ typedef NS_ENUM(NSInteger, TPHTTPStatusCode) {
     return self;
 }
 
-- (instancetype)initWithApiKey:(NSString*)apiKey {
-    self = [self initWithApiKey:apiKey
-           sessionConfiguration:NSURLSessionConfiguration.defaultSessionConfiguration];
+- (instancetype)initWithProjectId:(NSString*)projectId
+                           apiKey:(NSString*)apiKey{
+    self = [self initWithProjectId:projectId
+                            apiKey:apiKey
+              sessionConfiguration:NSURLSessionConfiguration.defaultSessionConfiguration];
     if (!self) {
         return nil;
     }
     return self;
 }
 
-- (instancetype)initWithApiKey:(NSString*)apiKey
-          sessionConfiguration:(NSURLSessionConfiguration*)configuration {
+- (instancetype)initWithProjectId:(NSString*)projectId
+                           apiKey:(NSString*)apiKey
+             sessionConfiguration:(NSURLSessionConfiguration*)configuration {
     self = [super init];
     if (!self) {
         return nil;
     }
     _apiKey = apiKey;
+    _projectId = projectId;
     _baseUrl = [NSURL URLWithString:TPConnectBaseURL];
     _pushBaseUrl = [NSURL URLWithString:@"events/" relativeToURL:_baseUrl];
     
     [configuration setHTTPAdditionalHeaders: @{
                                                @"Accept": @"application/json",
+                                               @"X-Project-Id": _projectId,
                                                @"X-API-Key": _apiKey
                                                }];
     
@@ -76,8 +82,10 @@ typedef NS_ENUM(NSInteger, TPHTTPStatusCode) {
     return self;
 }
 
-+ (instancetype)apiClientWithKey:(NSString*)apiKey {
-    TPConnectAPI *apiClient = [[[self class] alloc] initWithApiKey:apiKey];
++ (instancetype)apiClientWithProjectId:(NSString*)projectId
+                            withApiKey:(NSString*)apiKey  {
+    TPConnectAPI *apiClient = [[[self class] alloc] initWithProjectId:projectId
+                                                               apiKey:apiKey];
     return apiClient;
 }
 

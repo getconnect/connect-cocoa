@@ -11,7 +11,7 @@
 @interface TPEventStore : NSObject
 NS_ASSUME_NONNULL_BEGIN
 
-+ (instancetype) eventStoreWithApiKey:(NSString*)apiKey;
++ (instancetype) eventStoreWithProjectId:(NSString*)projectId;
 
 - (void)addEvent:(TPEvent*)event;
 - (void)addEvent:(TPEvent*)event withCompletionHandler:(void (^)(void))completionHandler;

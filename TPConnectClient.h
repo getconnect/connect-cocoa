@@ -16,16 +16,18 @@ NS_ASSUME_NONNULL_BEGIN
  
  Use this method to configure the shared Connect Client
  
+ @param projectId Your Connect project Id.
  @param apiKey Your connect API key.
  @return The configured shared client.
  */
-+ (instancetype)sharedClientWithAPIKey:(NSString *)apiKey;
++ (instancetype)sharedClientWithProjectId:(NSString*)projectId
+                                   apiKey:(NSString *)apiKey;
 
 /**
  
  The shared Connect Client
  
- @return The shared client if it has been configured with -sharedClientWithAPIKey: otherwise it returns nil.
+ @return The shared client if it has been configured with -sharedClientWithProjectId:apiKey otherwise it returns nil.
  */
 
 + (nullable instancetype)sharedClient;
@@ -35,11 +37,13 @@ NS_ASSUME_NONNULL_BEGIN
  Initializes a client ready to be used.
  Use this method if you would rather not use the shared singleton.
  
- @param apiKey Your connect API key.
+ @param projectId Your Connect project Id.
+ @param apiKey Your Connect API key.
  @return A configured Connect Client
  */
 
-+ (instancetype)clientWithApiKey:(NSString *)apiKey;
++ (instancetype)clientWithProjectId:(NSString *)projectId
+                             apiKey:(NSString *)apiKey;
 
 /**
  

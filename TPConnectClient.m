@@ -16,6 +16,7 @@ static TPConnectClient *sharedClient = nil;
 
 @interface TPConnectClient ()
 
+@property (readwrite, nonatomic, strong) NSString *projectId;
 @property (readwrite, nonatomic, strong) NSString *apiKey;
 @property (nonnull, nonatomic, strong) TPConnectAPI *apiClient;
 @property (nonnull, nonatomic, strong) TPEventStore *eventStore;
@@ -27,31 +28,37 @@ static TPConnectClient *sharedClient = nil;
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithApiKey:(NSString *)apiKey {
+- (instancetype)initWithProjectId:(NSString*)projectId
+                           apiKey:(NSString *)apiKey {
     self = [super init];
     if (!self) {
         return nil;
     }
     
     _apiKey = apiKey;
-    _apiClient = [TPConnectAPI apiClientWithKey:apiKey];
-    _eventStore = [TPEventStore eventStoreWithApiKey:apiKey];
+    _projectId = projectId;
+    _apiClient = [TPConnectAPI apiClientWithProjectId:projectId
+                                           withApiKey:apiKey];
+    _eventStore = [TPEventStore eventStoreWithProjectId:projectId];
     
     return self;
 }
 
-+ (instancetype)clientWithApiKey:(NSString *)apiKey {
-    return [[[self class] alloc] initWithApiKey:apiKey];
++ (instancetype)clientWithProjectId:(NSString*)projectId
+                             apiKey:(NSString *)apiKey {
+    return [[[self class] alloc] initWithProjectId:projectId
+                                            apiKey:apiKey];
 }
 
 + (instancetype)sharedClient {
     return sharedClient;
 }
 
-+ (instancetype)sharedClientWithAPIKey:(NSString *)apiKey {
++ (instancetype)sharedClientWithProjectId:(NSString*)projectId
+                                   apiKey:(NSString *)apiKey {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedClient = [[self class] clientWithApiKey:apiKey];
+        sharedClient = [[self class] clientWithProjectId:projectId apiKey:apiKey];
     });
     return sharedClient;
 }

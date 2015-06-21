@@ -22,7 +22,7 @@ class TPConnectAPITests: XCTestCase {
     
         let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
         sessionConfig.protocolClasses = [ UMKMockURLProtocol.self ]
-        connectApi = TPConnectAPI(apiKey: "", sessionConfiguration: sessionConfig)
+        connectApi = TPConnectAPI(projectId: "", apiKey: "", sessionConfiguration: sessionConfig)
         
         UMKMockURLProtocol.enable()
         UMKMockURLProtocol.reset()

@@ -11,7 +11,6 @@
 
 @interface TPEventStore()
 
-@property (nonatomic, strong) NSString *apiKey;
 @property (nonatomic, strong) YapDatabase *db;
 @property (nonatomic, strong) YapDatabaseConnection *connection;
 
@@ -22,22 +21,20 @@
 #pragma mark - Lifecycle
 
 - (instancetype)init {
-    self = [self initWithApiKey:nil];
+    self = [self initWithProjectId:nil];
     if (!self) {
         return nil;
     }
     return self;
 }
 
-- (instancetype)initWithApiKey:(NSString*)apiKey {
+- (instancetype)initWithProjectId:(NSString*)projectId {
     self = [super init];
     if (!self) {
         return nil;
     }
     
-    _apiKey = apiKey;
-    
-    NSString *databaseName = [NSString stringWithFormat:@"connect-%@.sqlite", apiKey];
+    NSString *databaseName = [NSString stringWithFormat:@"connect-%@.sqlite", projectId];
     
     NSURL *baseURL = [[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory
                                                             inDomain:NSUserDomainMask
@@ -54,8 +51,8 @@
     return self;
 }
 
-+ (instancetype) eventStoreWithApiKey:(NSString*)apiKey {
-    TPEventStore *eventStore = [[[self class] alloc] initWithApiKey:apiKey];
++ (instancetype) eventStoreWithProjectId:(NSString*)projectId {
+    TPEventStore *eventStore = [[[self class] alloc] initWithProjectId:projectId];
     return eventStore;
 }
 

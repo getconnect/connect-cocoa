@@ -9,7 +9,7 @@ import XCTest
 
 class TPEventStoreTests: XCTestCase {
     
-    let eventStore = TPEventStore(apiKey: "testing")
+    let eventStore = TPEventStore(projectId: "testing")
     
     override func setUp() {
         super.setUp()

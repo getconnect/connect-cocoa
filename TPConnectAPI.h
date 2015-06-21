@@ -11,10 +11,12 @@
 @interface TPConnectAPI : NSObject
 NS_ASSUME_NONNULL_BEGIN
 
-- (instancetype)initWithApiKey:(NSString*)apiKey
-          sessionConfiguration:(NSURLSessionConfiguration*)configuration;
+- (instancetype)initWithProjectId:(NSString*)projectId
+                           apiKey:(NSString*)apiKey
+             sessionConfiguration:(NSURLSessionConfiguration*)configuration;
 
-+ (instancetype)apiClientWithKey:(NSString*)apiKey;
++ (instancetype)apiClientWithProjectId:(NSString*)projectId
+                            withApiKey:(NSString*)apiKey;
 
 - (void)pushEvent:(TPEvent*)event completionHandler:(void (^__nullable)(BOOL success, NSError*__nullable))completionHandler;
 
