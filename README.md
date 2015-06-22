@@ -2,6 +2,7 @@
 
 [![Join the chat at https://gitter.im/getconnect/connect-cocoa](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/getconnect/connect-cocoa?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Version](http://img.shields.io/cocoapods/v/ConnectClient.svg)](http://cocoapods.org/?q=ConnectClient)
+[![Build Status](https://travis-ci.org/getconnect/connect-cocoa.svg?branch=master)](https://travis-ci.org/getconnect/connect-cocoa)
 
 ## Getting Access
 
