@@ -2,4 +2,5 @@ language: objective-c
 podfile: Example/Podfile
 xcode_workspace: Example/ConnectClient.xcworkspace
 xcode_scheme: ConnectClient-Example
-xcode_sdk: iphonesimulator8.1
+xcode_sdk: iphonesimulator8.3
+osx_image: beta-xcode6.3
