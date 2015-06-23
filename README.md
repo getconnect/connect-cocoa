@@ -27,7 +27,7 @@ Get your questions answered and join in with the connect community at [http://do
 
 ## Contributing
 
-We love open source here at Tipi HQ, so we are happy to accept pull requests and will endeavor to fix the issues and include the enhancements that the community raise.
+We love open source here at Connect, so we are happy to accept pull requests and will endeavor to fix the issues and include the enhancements that the community raise.
 
 ## Usage
 
